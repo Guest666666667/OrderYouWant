@@ -42,7 +42,7 @@ const itemArray: MenuItem[] = [];
 const itemQuantities = computed(() => store.getters['itemQuantities']);
 
 onMounted(async () => {
-  const response = await fetch('/menu.json');
+  const response = await fetch('./menu.json');
   const data = await response.json();
   menuData.value = data.categories;
   menuData.value.forEach(
