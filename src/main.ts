@@ -6,7 +6,6 @@ import store from './store'
 import { Tag, Button, Lazyload} from 'vant';
 import 'vant/lib/index.css';
 
-
 const app = createApp(App);
 app.use(Tag).use(Button);
 app.use(Lazyload, {

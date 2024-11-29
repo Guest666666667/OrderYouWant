@@ -1,79 +1,100 @@
 <template>
-  <div class="CartView">
-      <Empty v-show="totalQuantities == 0" description="快去选购吧！" />
-      <Row class="blank"></Row>
-      <Row>
-          <Col span="2">
-          </Col>
-          <Col span="20">
-          <Card v-for="(item, itemIndex) in itemQuantities" :key="itemIndex"
-              :num="item.quantity * itemQuantities[item.id].orderNum"
-              :price="item.price * itemQuantities[item.id].orderNum"
-              :origin-price="item.originalPrice * itemQuantities[item.id].orderNum" :desc="item.description"
-              :title="item.title" :thumb="item.image">
-              <template #tags>
-                  <van-tag v-for="(tag, tagIndex) in item.tags" :key="tagIndex" plain type="primary">{{ tag
-                      }}</van-tag>
-              </template>
-              <template #footer>
-                  <div class="counter">
-                      <van-button round class="num_button" size="mini"
-                          @click="updateOrderNum(item, -1)">-</van-button>
-                      <span>{{ itemQuantities[item.id].orderNum }}</span>
-                      <van-button round class="num_button" size="mini" @click="updateOrderNum(item, 1)">+</van-button>
-                  </div>
-              </template>
-          </Card>
-          </Col>
-          <Col span="2">
-          </Col>
-      </Row>
-      <Row>
-          <SubmitBar :price="totalAmount" button-text="下单" @submit="onSubmit" />
-      </Row>
-  </div>
+    <div class="CartView">
+        <Empty v-show="totalQuantities == 0" description="快去选购吧！" />
+        <Row class="blank"></Row>
+        <Row>
+            <Col span="2">
+            </Col>
+            <Col span="20">
+            <Card v-for="(item, itemIndex) in itemQuantities" :key="itemIndex"
+                :num="item.quantity * itemQuantities[item.id].orderNum"
+                :price="item.price * itemQuantities[item.id].orderNum"
+                :origin-price="item.originalPrice * itemQuantities[item.id].orderNum" :desc="item.description"
+                :title="item.title" :thumb="item.image">
+                <template #tags>
+                    <van-tag v-for="(tag, tagIndex) in item.tags" :key="tagIndex" plain type="primary">{{ tag
+                        }}</van-tag>
+                </template>
+                <template #footer>
+                    <div class="counter">
+                        <van-button round class="num_button" size="mini"
+                            @click="updateOrderNum(item, -1)">-</van-button>
+                        <span>{{ itemQuantities[item.id].orderNum }}</span>
+                        <van-button round class="num_button" size="mini" @click="updateOrderNum(item, 1)">+</van-button>
+                    </div>
+                </template>
+            </Card>
+            </Col>
+            <Col span="2">
+            </Col>
+        </Row>
+        <Row>
+            <SubmitBar :price="totalAmount" button-text="下单" @submit="onSubmit" />
+        </Row>
+    </div>
+    <Overlay :show="show" @click="show = false">
+        <div class="wrapper" @click.stop>
+            <img :src="qrCodeDataUrl" alt="QR Code">
+        </div>
+    </Overlay>
 </template>
 
 <script lang="ts" setup>
 
-import { Empty, Card, Col, Row, SubmitBar } from 'vant';
+import { Empty, Card, Col, Row, SubmitBar, Overlay } from 'vant';
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 import type { MenuItem } from '../types/types';
+import QRCode from 'qrcode';
 const store = useStore();
+const qrCodeDataUrl = ref('');
+const show = ref(false);
 const itemQuantities = computed(() => store.getters['itemQuantities']);
 const totalQuantities = computed(() => store.getters['totalQuantities']);
 const totalAmount = computed(() => store.getters['totalAmount']);
 const updateOrderNum = (item: MenuItem, change: number) => {
-  store.commit('updateItemQuantity', { id: item.id, change });
+    store.commit('updateItemQuantity', { id: item.id, change });
 }
-const onSubmit = () => {
-  console.log("aa")
+const onSubmit = async () => {
+    show.value = true
+    const orderInfo = {
+        items: Object.values(itemQuantities.value),
+        totalAmount: totalAmount.value
+    };
+    try {
+        const orderJson = JSON.stringify(orderInfo);
+        const url = `http://localhost:8080/OrderYouWant/#/order?info=${encodeURIComponent(orderJson)}`;
+        qrCodeDataUrl.value = await QRCode.toDataURL(url);
+        console.log(url)
+    } catch (err) {
+        console.error('Error generating QR Code:', err);
+    }
+
 };
 </script>
 
 <style scoped lang="scss">
 .CartView {
-  .blank {
-      height: 15px;
-  }
+    .blank {
+        height: 15px;
+    }
 
-  .counter {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
+    .counter {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
 
-      .num_button {
-          padding: 0 5px;
-      }
+        .num_button {
+            padding: 0 5px;
+        }
 
-      span {
-          margin: 0 5px 0 10px;
-      }
-  }
+        span {
+            margin: 0 5px 0 10px;
+        }
+    }
 
-  .van-submit-bar {
-      bottom: 50px;
-  }
+    .van-submit-bar {
+        bottom: 50px;
+    }
 }
 </style>
