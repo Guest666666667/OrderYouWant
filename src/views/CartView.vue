@@ -1,10 +1,79 @@
 <template>
-  <div class="Cart">
-      <CartList />
+  <div class="CartView">
+      <Empty v-show="totalQuantities == 0" description="快去选购吧！" />
+      <Row class="blank"></Row>
+      <Row>
+          <Col span="2">
+          </Col>
+          <Col span="20">
+          <Card v-for="(item, itemIndex) in itemQuantities" :key="itemIndex"
+              :num="item.quantity * itemQuantities[item.id].orderNum"
+              :price="item.price * itemQuantities[item.id].orderNum"
+              :origin-price="item.originalPrice * itemQuantities[item.id].orderNum" :desc="item.description"
+              :title="item.title" :thumb="item.image">
+              <template #tags>
+                  <van-tag v-for="(tag, tagIndex) in item.tags" :key="tagIndex" plain type="primary">{{ tag
+                      }}</van-tag>
+              </template>
+              <template #footer>
+                  <div class="counter">
+                      <van-button round class="num_button" size="mini"
+                          @click="updateOrderNum(item, -1)">-</van-button>
+                      <span>{{ itemQuantities[item.id].orderNum }}</span>
+                      <van-button round class="num_button" size="mini" @click="updateOrderNum(item, 1)">+</van-button>
+                  </div>
+              </template>
+          </Card>
+          </Col>
+          <Col span="2">
+          </Col>
+      </Row>
+      <Row>
+          <SubmitBar :price="totalAmount" button-text="下单" @submit="onSubmit" />
+      </Row>
   </div>
 </template>
 
 <script lang="ts" setup>
-import CartList from '@/components/CartList.vue';
 
+import { Empty, Card, Col, Row, SubmitBar } from 'vant';
+import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
+import type { MenuItem } from '../types/types';
+const store = useStore();
+const itemQuantities = computed(() => store.getters['itemQuantities']);
+const totalQuantities = computed(() => store.getters['totalQuantities']);
+const totalAmount = computed(() => store.getters['totalAmount']);
+const updateOrderNum = (item: MenuItem, change: number) => {
+  store.commit('updateItemQuantity', { id: item.id, change });
+}
+const onSubmit = () => {
+  console.log("aa")
+};
 </script>
+
+<style scoped lang="scss">
+.CartView {
+  .blank {
+      height: 15px;
+  }
+
+  .counter {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .num_button {
+          padding: 0 5px;
+      }
+
+      span {
+          margin: 0 5px 0 10px;
+      }
+  }
+
+  .van-submit-bar {
+      bottom: 50px;
+  }
+}
+</style>

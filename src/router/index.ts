@@ -21,6 +21,14 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title:"购物车"
     },
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: () => import('../views/OrderView.vue'),
+    meta: {
+      title:"订单"
+    },
   }
 ]
 
