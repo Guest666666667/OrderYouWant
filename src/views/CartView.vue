@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 
 import { Empty, Card, Col, Row, SubmitBar, showLoadingToast } from 'vant';
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 import type { MenuItem } from '../types/types';
 import { useRouter } from 'vue-router';

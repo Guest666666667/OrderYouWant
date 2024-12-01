@@ -26,7 +26,7 @@
     </div>
     <ShareSheet v-model:show="showShare" title="分享给大厨，免费吃大餐" :options="options" @select="onSelect" />
     <Overlay :show="showQrcode" @click="showQrcode = false">
-        <div class="wrapper" @click.stop>
+        <div class="wrapper">
             <img :src="qrCodeDataUrl" alt="QR Code">
             <div class="qrcodeText">长按保存到相册</div>
         </div>
