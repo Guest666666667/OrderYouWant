@@ -18,14 +18,17 @@ export default createStore({
     setItemArray(state, items) { 
       state.itemArray = items; 
     }, 
-    updateItemQuantity(state, { id, change }) { 
+    updateItemQuantity(state, { id, change }) {
+      // Copy the item if it wasn't in the cart
       if (!state.itemQuantities[id]) { 
         const item = state.itemArray.find(item => item.id === id); 
         if(item){
           state.itemQuantities[id] = item;
         }
       }
-      if (state.itemQuantities[id].orderNum + change >= 0) {
+      // Item quantities ∈(0, 9]
+      const orderN = state.itemQuantities[id].orderNum + change
+      if (orderN >=  0 && orderN <= 9) {
         state.itemQuantities[id].orderNum += change; 
         state.totalQuantities += change;
         state.totalAmount += parseFloat(state.itemQuantities[id].price) * change * 100;

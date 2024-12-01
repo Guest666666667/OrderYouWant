@@ -16,9 +16,3 @@ export interface MenuItem {
     id: number;
     items: MenuItem[];
   }
-
-  export interface OrderInfo { 
-    items: MenuItem[]; 
-    totalAmount: number; 
-  }
-  

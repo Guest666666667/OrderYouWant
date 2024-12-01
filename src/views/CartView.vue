@@ -3,8 +3,7 @@
         <Empty v-show="totalQuantities == 0" description="快去选购吧！" />
         <Row class="blank"></Row>
         <Row>
-            <Col span="2">
-            </Col>
+            <Col span="2" />
             <Col span="20">
             <Card v-for="(item, itemIndex) in itemQuantities" :key="itemIndex"
                 :num="item.quantity * itemQuantities[item.id].orderNum"
@@ -25,52 +24,43 @@
                 </template>
             </Card>
             </Col>
-            <Col span="2">
-            </Col>
+            <Col span="2" />
         </Row>
         <Row>
-            <SubmitBar :price="totalAmount" button-text="下单" @submit="onSubmit" />
+            <SubmitBar :price="totalAmount" :disabled="totalAmount == 0" button-text="下单" @submit="onSubmit" />
         </Row>
     </div>
-    <Overlay :show="show" @click="show = false">
-        <div class="wrapper" @click.stop>
-            <img :src="qrCodeDataUrl" alt="QR Code">
-        </div>
-    </Overlay>
 </template>
 
 <script lang="ts" setup>
 
-import { Empty, Card, Col, Row, SubmitBar, Overlay } from 'vant';
+import { Empty, Card, Col, Row, SubmitBar, showLoadingToast } from 'vant';
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 import type { MenuItem } from '../types/types';
-import QRCode from 'qrcode';
+import { useRouter } from 'vue-router';
 const store = useStore();
-const qrCodeDataUrl = ref('');
-const show = ref(false);
+const router = useRouter();
+const itemArray = computed(() => store.getters['itemArray']);
 const itemQuantities = computed(() => store.getters['itemQuantities']);
 const totalQuantities = computed(() => store.getters['totalQuantities']);
 const totalAmount = computed(() => store.getters['totalAmount']);
 const updateOrderNum = (item: MenuItem, change: number) => {
     store.commit('updateItemQuantity', { id: item.id, change });
 }
-const onSubmit = async () => {
-    show.value = true
-    const orderInfo = {
-        items: Object.values(itemQuantities.value),
-        totalAmount: totalAmount.value
-    };
-    try {
-        const orderJson = JSON.stringify(orderInfo);
-        const url = `http://localhost:8080/OrderYouWant/#/order?info=${encodeURIComponent(orderJson)}`;
-        qrCodeDataUrl.value = await QRCode.toDataURL(url);
-        console.log(url)
-    } catch (err) {
-        console.error('Error generating QR Code:', err);
-    }
-
+const onSubmit = () => {
+    showLoadingToast({
+        duration: 600,
+        forbidClick: true,
+        message: '下单中...',
+        onClose: jumpToOrderPage,
+    });
 };
+const jumpToOrderPage = () => {
+    let orderStr = itemArray.value.map((item: MenuItem) => item.orderNum).join('');
+    orderStr += "%" + totalAmount.value
+    router.push({ name: 'order', query: { info: orderStr } });
+}
 </script>
 
 <style scoped lang="scss">
