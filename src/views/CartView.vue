@@ -1,7 +1,6 @@
 <template>
     <div class="CartView">
         <Empty v-show="totalQuantities == 0" description="快去选购吧！" />
-        <Row class="blank"></Row>
         <Row>
             <Col span="2" />
             <Col span="20">
@@ -26,6 +25,7 @@
             </Col>
             <Col span="2" />
         </Row>
+        <Row class="blank"></Row>
         <Row>
             <SubmitBar :price="totalAmount" :disabled="totalAmount == 0" button-text="下单" @submit="onSubmit" />
         </Row>
@@ -66,7 +66,7 @@ const jumpToOrderPage = () => {
 <style scoped lang="scss">
 .CartView {
     .blank {
-        height: 15px;
+        height: 100px;
     }
 
     .counter {
