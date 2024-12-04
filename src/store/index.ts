@@ -7,12 +7,14 @@ export default createStore({
     itemQuantities: <Record<number, MenuItem>>({}),
     totalQuantities: <number>0,
     totalAmount: <number>0,
+    diningTime: <number>1,
   },
   getters: {
     itemArray: (state) => state.itemArray, 
     itemQuantities: (state) => state.itemQuantities,
     totalQuantities: (state) => state.totalQuantities,
-    totalAmount: (state) => state.totalAmount
+    totalAmount: (state) => state.totalAmount,
+    diningTime: (state) => state.diningTime
   },
   mutations: {
     setItemArray(state, items) { 
@@ -36,7 +38,10 @@ export default createStore({
           delete state.itemQuantities[id];
         }
       } 
-    }
+    },
+    setDiningTime(state, time) { 
+      state.diningTime = time; 
+    }, 
   },
   actions: {
   },

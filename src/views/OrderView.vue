@@ -1,7 +1,7 @@
 <template>
     <div class="OrderView">
         <Empty image="error" v-show="!validOrder" description="无效的订单" />
-        <Row class="blank"></Row>
+        <Row class="smallBlank"></Row>
         <Row>
             <Col span="2" />
             <Col span="20">
@@ -19,10 +19,10 @@
         </Row>
         <Row v-show="validOrder" justify="center">
             <span class="total">订单总额：</span>
-            <RollingText :start-num="0" :target-num="25" :duration="1" stop-order="rtl" />
+            <RollingText :start-num="0" :target-num="integerPart" :duration="1" stop-order="rtl" />
             <span class="total">.</span>
-            <RollingText :text-list="textList" :duration="1" stop-order="rtl"/>
-            <RollingText :text-list="textList" :duration="1" stop-order="rtl"/>
+            <RollingText :text-list="decimalList_1" :duration="1" stop-order="rtl" />
+            <RollingText :text-list="decimalList_2" :duration="1" stop-order="rtl" />
 
 
         </Row>
@@ -57,16 +57,11 @@ const options = [
 ];
 const qrCodeDataUrl = ref('');
 const showQrcode = ref(false);
-const totalAmount = ref(0)
-const textList = ref([
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '1',
-    '0',
-]);
+const integerPart = ref(0);
+const decimalPart_1 = ref("");
+const decimalPart_2 = ref("");
+const decimalList_1 = ref<string[]>([]);
+const decimalList_2 = ref<string[]>([]);
 onMounted(() => {
     readLinkInfo();
 });
@@ -74,15 +69,30 @@ const readLinkInfo = async () => {
     const info = route.query.info as string;
     let count = 0;
     OrderItems.value = [];
+    decimalList_1.value = [];
+    decimalList_2.value = [];
     const orderStr = convertBase62(info.split("_")[0], false);
     try {
         const infoAmount = info.split("_")[1]
-        totalAmount.value = parseInt(convertBase62(infoAmount, false), 10) / 100;
-        if (isNaN(totalAmount.value)) { throw new Error(); }
+        const totalAmount = parseInt(convertBase62(infoAmount, false), 10) / 100;
+        if (isNaN(totalAmount)) { throw new Error(); }
+        integerPart.value = Math.floor(totalAmount);
+        const decimalPart = (totalAmount % 1).toFixed(2).substring(2);
+        decimalPart_1.value = decimalPart.charAt(0);
+        decimalPart_2.value = decimalPart.charAt(1);
+        console.log(integerPart.value, decimalPart_1.value, decimalPart_2.value)
     } catch (err) {
         validOrder.value = false;
         return;
     }
+
+    for (let i = 9; i >= 0; i--) {
+        const num_1 = (parseInt(decimalPart_1.value) - i + 10) % 10;
+        const num_2 = (parseInt(decimalPart_2.value) + i) % 10;
+        decimalList_1.value.push(num_1.toString());
+        decimalList_2.value.push(num_2.toString());
+    }
+    console.log(decimalList_1.value, decimalList_2.value)
     validOrder.value = true;
     const response = await fetch(`${process.env.BASE_URL}menu.json`);
     const data = await response.json();
@@ -141,7 +151,7 @@ const getQrcode = async () => {
 
 <style scoped lang="scss">
 .OrderView {
-    .blank {
+    .smallBlank {
         height: 15px;
     }
 

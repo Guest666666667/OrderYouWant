@@ -1,6 +1,7 @@
 <template>
     <div class="CartView">
         <Empty v-show="totalQuantities == 0" description="快去选购吧！" />
+        <Row class="smallBlank"></Row>
         <Row>
             <Col span="2" />
             <Col span="20">
@@ -25,6 +26,13 @@
             </Col>
             <Col span="2" />
         </Row>
+        <Row v-show="totalQuantities != 0">
+            <Col span="2" />
+            <Col span="20">
+            <checkBoxs />
+            </Col>
+            <Col span="2" />
+        </Row>
         <Row class="blank"></Row>
         <Row>
             <SubmitBar :price="totalAmount" :disabled="totalAmount == 0" button-text="下单" @submit="onSubmit" />
@@ -40,6 +48,7 @@ import { useStore } from 'vuex';
 import type { MenuItem } from '../types/types';
 import { useRouter } from 'vue-router';
 import { convertBase62 } from "@/utils/base62";
+import checkBoxs from '@/components/checkBoxs.vue';
 const store = useStore();
 const router = useRouter();
 const itemArray = computed(() => store.getters['itemArray']);
@@ -59,7 +68,6 @@ const onSubmit = () => {
 };
 const jumpToOrderPage = () => {
     let orderStr = itemArray.value.map((item: MenuItem) => item.orderNum).join('');
-    console.log(orderStr, totalAmount.value)
     let encodedOrderStr = convertBase62(orderStr, true) + "_" + convertBase62(totalAmount.value, true);
     router.push({ name: 'order', query: { info: encodedOrderStr } });
 }
@@ -67,6 +75,10 @@ const jumpToOrderPage = () => {
 
 <style scoped lang="scss">
 .CartView {
+    .smallBlank {
+        height: 15px;
+    }
+
     .blank {
         height: 100px;
     }
