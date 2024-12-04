@@ -39,6 +39,7 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 import type { MenuItem } from '../types/types';
 import { useRouter } from 'vue-router';
+import { convertBase62 } from "@/utils/base62";
 const store = useStore();
 const router = useRouter();
 const itemArray = computed(() => store.getters['itemArray']);
@@ -58,8 +59,9 @@ const onSubmit = () => {
 };
 const jumpToOrderPage = () => {
     let orderStr = itemArray.value.map((item: MenuItem) => item.orderNum).join('');
-    orderStr += "%" + totalAmount.value
-    router.push({ name: 'order', query: { info: orderStr } });
+    console.log(orderStr, totalAmount.value)
+    let encodedOrderStr = convertBase62(orderStr, true) + "_" + convertBase62(totalAmount.value, true);
+    router.push({ name: 'order', query: { info: encodedOrderStr } });
 }
 </script>
 

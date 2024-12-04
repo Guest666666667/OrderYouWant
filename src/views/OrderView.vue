@@ -1,6 +1,6 @@
 <template>
     <div class="OrderView">
-        <Empty v-show="!validOrder" description="快去选购吧！" />
+        <Empty image="error" v-show="!validOrder" description="无效的订单" />
         <Row class="blank"></Row>
         <Row>
             <Col span="2" />
@@ -36,10 +36,11 @@
 <script lang="ts" setup>
 
 import { Empty, Card, Col, Row, ShareSheet, Overlay, showSuccessToast } from 'vant';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import type { Category, MenuItem } from '../types/types';
 import QRCode from 'qrcode';
+import { convertBase62 } from "@/utils/base62";
 const validOrder = ref(false)
 const OrderItems = ref<MenuItem[]>([]);
 const route = useRoute();
@@ -51,15 +52,25 @@ const options = [
 const qrCodeDataUrl = ref('');
 const showQrcode = ref(false);
 const totalAmount = ref(0)
-onMounted(async () => {
+onMounted(() => {
+    readLinkInfo();
+});
+const readLinkInfo = async () => {
     const info = route.query.info as string;
-    if (!info) return;
-    validOrder.value = true
-    const orderStr = info.split("%")[0];
-    totalAmount.value = parseInt(info.split("%")[1], 10) / 100;
+    let count = 0;
+    OrderItems.value = [];
+    const orderStr = convertBase62(info.split("_")[0], false);
+    try {
+        const infoAmount = info.split("_")[1]
+        totalAmount.value = parseInt(convertBase62(infoAmount, false), 10) / 100;
+        if (isNaN(totalAmount.value)) { throw new Error(); }
+    } catch (err) {
+        validOrder.value = false;
+        return;
+    }
+    validOrder.value = true;
     const response = await fetch(`${process.env.BASE_URL}menu.json`);
     const data = await response.json();
-    let count = 0;
     data.categories.forEach(
         (category: Category) => {
             category.items.forEach(item => {
@@ -71,7 +82,16 @@ onMounted(async () => {
                 count++;
             });
         });
-});
+}
+// watch for the link info change
+watch(
+    () => route.query.info,
+    (newInfo, oldInfo) => {
+        if (newInfo && (newInfo !== oldInfo)) {
+            readLinkInfo();
+        }
+    }
+);
 const onSelect = (option: any) => {
     switch (option.id) {
         case "link": {
