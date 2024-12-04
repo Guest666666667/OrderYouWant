@@ -18,7 +18,13 @@
             <Col span="2" />
         </Row>
         <Row v-show="validOrder" justify="center">
-            <div class="total">订单总额：￥{{ totalAmount }}</div>
+            <span class="total">订单总额：</span>
+            <RollingText :start-num="0" :target-num="25" :duration="1" stop-order="rtl" />
+            <span class="total">.</span>
+            <RollingText :text-list="textList" :duration="1" stop-order="rtl"/>
+            <RollingText :text-list="textList" :duration="1" stop-order="rtl"/>
+
+
         </Row>
         <Row v-show="validOrder" justify="center">
             <van-button plain type="success" class="shareButton" @click="showShare = true">分享即可免费吃！</van-button>
@@ -35,7 +41,7 @@
 
 <script lang="ts" setup>
 
-import { Empty, Card, Col, Row, ShareSheet, Overlay, showSuccessToast } from 'vant';
+import { Empty, Card, Col, Row, ShareSheet, Overlay, RollingText, showSuccessToast } from 'vant';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import type { Category, MenuItem } from '../types/types';
@@ -52,6 +58,15 @@ const options = [
 const qrCodeDataUrl = ref('');
 const showQrcode = ref(false);
 const totalAmount = ref(0)
+const textList = ref([
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '1',
+    '0',
+]);
 onMounted(() => {
     readLinkInfo();
 });
@@ -149,7 +164,7 @@ const getQrcode = async () => {
     }
 
     .total {
-        margin-top: 20px;
+        line-height: 40px;
     }
 
     .shareButton {
