@@ -1,7 +1,7 @@
 {
   "categories": [
     {
-      "name": "中国硬菜",
+      "name": "小罗硬菜",
       "id": 1,
       "items": [
         {
@@ -99,6 +99,48 @@
           "quantity": 1,
           "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
           "orderNum": 0
+        },
+        {
+          "title": "番茄火锅鸡",
+          "id": 108,
+          "description": "酸辣可口，是小妮最爱的贵州风味",
+          "price": "45.00",
+          "originalPrice": "65.00",
+          "tags": [
+            "酸辣",
+            "下饭"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "豆腐牛肉煲",
+          "id": 109,
+          "description": "滑嫩的豆腐，鲜嫩的牛肉，小妮吃了赞不绝口",
+          "price": "30.00",
+          "originalPrice": "42.00",
+          "tags": [
+            "豆腐",
+            "牛肉"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "油焖大虾",
+          "id": 110,
+          "description": "超级好吃的油焖大虾，鲜美到让你停不下来",
+          "price": "30.00",
+          "originalPrice": "42.00",
+          "tags": [
+            "香辣",
+            "大虾"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
         }
       ]
     },
@@ -146,13 +188,81 @@
           "orderNum": 0
         },
         {
-          "title": "糖醋土豆丝",
+          "title": "青椒土豆丝",
           "id": 204,
-          "description": "酸甜可口的糖醋土豆丝，是一道开胃小菜。",
+          "description": "一道开胃小菜",
           "price": "8.00",
           "originalPrice": "12.00",
           "tags": [
-            "酸辣"
+            "下饭",
+            "快手菜"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "韭菜炒蛋",
+          "id": 205,
+          "description": "简单好吃又下饭的家常菜",
+          "price": "10.00",
+          "originalPrice": "15.00",
+          "tags": [
+            "家常菜",
+            "减脂"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "麻婆豆腐",
+          "id": 206,
+          "description": "麻辣过瘾又下饭~",
+          "price": "13.00",
+          "originalPrice": "20.00",
+          "tags": [
+            "豆瓣酱",
+            "鲜香麻辣"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "干煸手撕包菜",
+          "id": 207,
+          "description": "香辣又健康，十分好吃",
+          "price": "13.00",
+          "originalPrice": "20.00",
+          "tags": [
+            "香辣"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "番茄炒蛋",
+          "id": 208,
+          "description": "简单易做、营养丰富、口感鲜美",
+          "price": "13.00",
+          "originalPrice": "20.00",
+          "tags": [
+            "快手菜"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "蒜蓉西兰花",
+          "id": 209,
+          "description": "超级低卡，健康美味",
+          "price": "13.00",
+          "originalPrice": "20.00",
+          "tags": [
+            "减脂期必吃"
           ],
           "quantity": 1,
           "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
@@ -165,9 +275,9 @@
       "id": 3,
       "items": [
         {
-          "title": "烤薯条",
+          "title": "薯条",
           "id": 301,
-          "description": "脆嫩的烤薯条，外酥内软，配上特色调味料。",
+          "description": "脆嫩的薯条，外酥内软，配上特色调味料。",
           "price": "12.00",
           "originalPrice": "15.00",
           "tags": [
@@ -301,6 +411,34 @@
           "quantity": 1,
           "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
           "orderNum": 0
+        },
+        {
+          "title": "滋补鸡汤",
+          "id": 407,
+          "description": "一锅鸡汤加上适量枸杞红枣，暖暖的。",
+          "price": "30.00",
+          "originalPrice": "40.00",
+          "tags": [
+            "暖胃",
+            "养生"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "韩式泡菜嫩豆腐汤",
+          "id": 408,
+          "description": "来一碗热气腾腾的豆腐汤，温暖冬日吧。",
+          "price": "30.00",
+          "originalPrice": "40.00",
+          "tags": [
+            "低脂",
+            "健康"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
         }
       ]
     },
@@ -310,7 +448,7 @@
       "items": [
         {
           "title": "川渝火锅",
-          "id": 401,
+          "id": 501,
           "description": "正宗的川渝火锅，麻辣鲜香，味道浓郁。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -323,7 +461,7 @@
         },
         {
           "title": "菌汤养生锅",
-          "id": 402,
+          "id": 502,
           "description": "鲜美的菌汤火锅，丰富的菌菇，健康又美味。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -336,7 +474,7 @@
         },
         {
           "title": "番茄锅",
-          "id": 403,
+          "id": 503,
           "description": "酸甜可口的番茄火锅，营养丰富，口感清新。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -350,7 +488,7 @@
         },
         {
           "title": "酸汤锅",
-          "id": 404,
+          "id": 504,
           "description": "清爽酸辣的酸汤火锅，开胃又美味。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -363,7 +501,7 @@
         },
         {
           "title": "豆豉火锅",
-          "id": 405,
+          "id": 505,
           "description": "独特风味的豆豉火锅，香辣可口。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -376,7 +514,7 @@
         },
         {
           "title": "韩式部队锅",
-          "id": 406,
+          "id": 506,
           "description": "丰富多样的韩式部队锅，辛辣开胃，满满的食材。",
           "price": "20.00",
           "originalPrice": "27.00",
@@ -389,12 +527,26 @@
         },
         {
           "title": "日式寿喜烧",
-          "id": 407,
+          "id": 507,
           "description": "经典的日式寿喜烧，甜咸适中，肉嫩菜鲜。",
           "price": "20.00",
           "originalPrice": "27.00",
           "tags": [
             "治愈"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "猪肚煲鸡锅",
+          "id": 508,
+          "description": "经一道营养丰富、滋补养生的传统中式美食，尤其适合寒冷的加拿大享用",
+          "price": "20.00",
+          "originalPrice": "27.00",
+          "tags": [
+            "治愈",
+            "浓郁"
           ],
           "quantity": 1,
           "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
@@ -408,7 +560,7 @@
       "items": [
         {
           "title": "生菜",
-          "id": 501,
+          "id": 601,
           "description": "清爽可口的生菜，富含维生素，健康选择。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -422,7 +574,7 @@
         },
         {
           "title": "青菜",
-          "id": 502,
+          "id": 602,
           "description": "新鲜的青菜，口感清脆，营养丰富。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -435,7 +587,7 @@
         },
         {
           "title": "豆芽",
-          "id": 503,
+          "id": 603,
           "description": "嫩嫩的豆芽，爽口又健康。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -448,7 +600,7 @@
         },
         {
           "title": "土豆",
-          "id": 504,
+          "id": 604,
           "description": "细腻的土豆，适合各种烹饪方式，百搭蔬菜。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -461,7 +613,7 @@
         },
         {
           "title": "萝卜",
-          "id": 505,
+          "id": 605,
           "description": "鲜美的萝卜，生吃熟吃皆可。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -474,7 +626,7 @@
         },
         {
           "title": "冬瓜",
-          "id": 506,
+          "id": 606,
           "description": "清甜的冬瓜，适合炖汤或煮菜。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -487,7 +639,7 @@
         },
         {
           "title": "豆皮",
-          "id": 507,
+          "id": 607,
           "description": "质地嫩滑的豆皮，适合各种烹饪方式。",
           "price": "8.00",
           "originalPrice": "12.00",
@@ -500,7 +652,7 @@
         },
         {
           "title": "腐竹",
-          "id": 508,
+          "id": 608,
           "description": "富含营养的腐竹，口感独特，适合凉拌或煮汤。",
           "price": "8.00",
           "originalPrice": "12.00",
@@ -513,7 +665,7 @@
         },
         {
           "title": "海带",
-          "id": 509,
+          "id": 609,
           "description": "营养丰富的海带，适合凉拌或炖汤。",
           "price": "8.00",
           "originalPrice": "12.00",
@@ -526,7 +678,7 @@
         },
         {
           "title": "粉丝",
-          "id": 510,
+          "id": 610,
           "description": "细嫩的粉丝，搭配各种菜肴都很美味。",
           "price": "8.00",
           "originalPrice": "12.00",
@@ -612,12 +764,98 @@
       ]
     },
     {
-      "name": "酒水饮料",
+      "name": "滋味小食",
       "id": 8,
       "items": [
         {
-          "title": "清茶",
+          "title": "麻辣鸡丝",
           "id": 801,
+          "description": "一道口感鲜香麻辣、色泽诱人的川菜",
+          "price": "15.00",
+          "originalPrice": "18.00",
+          "tags": [
+            "香辣"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "重庆苕皮",
+          "id": 802,
+          "description": "美味软糯苕皮，裹上辣椒粉和酸豇豆，美味的不得了",
+          "price": "15.00",
+          "originalPrice": "18.00",
+          "tags": [
+            "软糯",
+            "香辣"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "桂花醪糟小丸子",
+          "id": 803,
+          "description": "一道非常受欢迎的传统小吃",
+          "price": "15.00",
+          "originalPrice": "16.00",
+          "tags": [
+            "爽口",
+            "香甜"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "红枣银耳羹",
+          "id": 804,
+          "description": "滋补养颜、润肺生津。",
+          "price": "10.00",
+          "originalPrice": "15.00",
+          "tags": [
+            "银耳"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "拍黄瓜",
+          "id": 805,
+          "description": "清脆爽口，酸辣开胃",
+          "price": "8.00",
+          "originalPrice": "10.00",
+          "tags": [
+            "爽脆好吃"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "凉拌木耳",
+          "id": 806,
+          "description": "好吃绝了，酸辣爽口凉拌菜。",
+          "price": "9.00",
+          "originalPrice": "12.00",
+          "tags": [
+            "低脂"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        }
+      ]
+    },
+    {
+      "name": "酒水饮料",
+      "id": 9,
+      "items": [
+        {
+          "title": "清茶",
+          "id": 901,
           "description": "淡雅的清茶，清新自然，回味悠长。",
           "price": "5.00",
           "originalPrice": "8.00",
@@ -630,7 +868,7 @@
         },
         {
           "title": "橙汁",
-          "id": 802,
+          "id": 902,
           "description": "新鲜的橙汁，酸甜可口，富含维生素C。",
           "price": "12.00",
           "originalPrice": "15.00",
@@ -643,7 +881,7 @@
         },
         {
           "title": "奶茶",
-          "id": 803,
+          "id": 903,
           "description": "香浓的奶茶，甜美丝滑，令人心情愉悦。",
           "price": "12.00",
           "originalPrice": "15.00",
@@ -656,7 +894,7 @@
         },
         {
           "title": "椰汁",
-          "id": 804,
+          "id": 904,
           "description": "清爽的椰汁，香甜可口，解渴佳品。",
           "price": "15.00",
           "originalPrice": "18.00",
