@@ -134,7 +134,7 @@ const onSelect = (option: any) => {
 const copyToClipboard = async () => {
     try {
         await navigator.clipboard.writeText(window.location.href);
-        showSuccessToast("已复制链接地址");
+        showSuccessToast("链接已复制");
     } catch (err) {
         console.error('Failed to copy text: ', err);
     }

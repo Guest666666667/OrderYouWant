@@ -4,6 +4,7 @@ import type { MenuItem } from '../types/types';
 export default createStore({
   state: {
     itemArray: <MenuItem[]>[], 
+    categoryTotals : <Record<number, number>>({}),
     itemQuantities: <Record<number, MenuItem>>({}),
     totalQuantities: <number>0,
     totalAmount: <number>0,
@@ -11,6 +12,7 @@ export default createStore({
   },
   getters: {
     itemArray: (state) => state.itemArray, 
+    categoryTotals: (state) => state.categoryTotals,
     itemQuantities: (state) => state.itemQuantities,
     totalQuantities: (state) => state.totalQuantities,
     totalAmount: (state) => state.totalAmount,
@@ -31,6 +33,7 @@ export default createStore({
       // Item quantities ∈(0, 9]
       const orderN = state.itemQuantities[id].orderNum + change
       if (orderN >=  0 && orderN <= 9) {
+        state.categoryTotals[Math.floor(id / 100)] += change;
         state.itemQuantities[id].orderNum += change; 
         state.totalQuantities += change;
         state.totalAmount += parseFloat(state.itemQuantities[id].price) * change * 100;

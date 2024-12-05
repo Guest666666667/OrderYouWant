@@ -2,12 +2,19 @@
     <div class="CartView">
         <Empty v-show="totalQuantities == 0" description="快去选购吧！" />
         <Row class="smallBlank"></Row>
+        <Row v-show="totalQuantities != 0">
+            <Col span="2" />
+            <Col span="20">
+            <checkBoxs />
+            </Col>
+            <Col span="2" />
+        </Row>
         <Row>
             <Col span="2" />
             <Col span="20">
             <Card v-for="(item, itemIndex) in itemQuantities" :key="itemIndex"
                 :num="item.quantity * itemQuantities[item.id].orderNum"
-                :price="item.price * itemQuantities[item.id].orderNum"
+                :price="(item.price * itemQuantities[item.id].orderNum).toFixed(2)"
                 :origin-price="item.originalPrice * itemQuantities[item.id].orderNum" :desc="item.description"
                 :title="item.title" :thumb="item.image">
                 <template #tags>
@@ -23,13 +30,6 @@
                     </div>
                 </template>
             </Card>
-            </Col>
-            <Col span="2" />
-        </Row>
-        <Row v-show="totalQuantities != 0">
-            <Col span="2" />
-            <Col span="20">
-            <checkBoxs />
             </Col>
             <Col span="2" />
         </Row>

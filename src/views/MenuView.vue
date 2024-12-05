@@ -3,7 +3,8 @@
     <Row>
       <Col span="6">
       <Sidebar v-model="active" @change="scrollToCategory">
-        <SidebarItem v-for="(category, index) in menuData" :key="index" :title="category.name" />
+        <SidebarItem v-for="(category, index) in menuData" :key="index" :title="category.name"
+          :badge="categoryTotals[index + 1] ? categoryTotals[index + 1] : undefined" />
       </Sidebar>
       </Col>
       <Col span="18">
@@ -40,6 +41,7 @@ const store = useStore();
 const active = ref(0);
 const menuData = ref<Category[]>([]);
 const itemArray: MenuItem[] = [];
+const categoryTotals = computed(() => store.getters['categoryTotals']);
 const itemQuantities = computed(() => store.getters['itemQuantities']);
 const categoryRefs = ref<(HTMLElement | null)[]>([]);
 
@@ -50,6 +52,7 @@ onMounted(async () => {
   menuData.value = data.categories;
   menuData.value.forEach(
     category => {
+      categoryTotals.value[category.id] = 0;
       category.items.forEach(item => {
         itemArray.push(item);
       });
