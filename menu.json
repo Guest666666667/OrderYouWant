@@ -8,29 +8,29 @@
           "title": "辣椒炒肉",
           "id": 101,
           "description": "鲜嫩多汁的辣椒炒肉，家常美味。",
-          "price": "11.99",
-          "originalPrice": "15.00",
+          "price": "14.99",
+          "originalPrice": "21.00",
           "tags": [
             "Top",
             "经典",
             "下饭"
           ],
           "quantity": 1,
-          "image": "./img/dishes/M_ljcr.png",
+          "image": "./img/dishes/M_ljcr.webp",
           "orderNum": 0
         },
         {
           "title": "黄焖鸡",
           "id": 102,
           "description": "经典黄焖鸡，酱香浓郁，鸡肉嫩滑，是一道令人回味无穷的佳肴。",
-          "price": "14.99",
-          "originalPrice": "21.00",
+          "price": "18.99",
+          "originalPrice": "28.00",
           "tags": [
             "浓香",
             "开胃"
           ],
           "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "image": "./img/dishes/M_hmj.webp",
           "orderNum": 0
         },
         {
@@ -43,103 +43,103 @@
             "营养"
           ],
           "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "image": "./img/dishes/M_cyzy.webp",
           "orderNum": 0
         },
         {
           "title": "红烧排骨",
           "id": 104,
           "description": "排骨酱香浓郁，肉质鲜嫩，是一道受欢迎的经典美味。",
-          "price": "18.99",
-          "originalPrice": "28.00",
+          "price": "24.99",
+          "originalPrice": "39.00",
           "tags": [
             "酱香"
           ],
           "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "image": "./img/dishes/M_hspg.webp",
           "orderNum": 0
         },
         {
-          "title": "辣子鸡",
+          "title": "四川辣子鸡",
           "id": 105,
           "description": "香辣可口的辣子鸡，令人食欲大开。",
-          "price": "25.00",
+          "price": "24.99",
           "originalPrice": "39.00",
           "tags": [
             "香辣",
             "功夫菜"
           ],
           "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
-          "orderNum": 0
-        },
-        {
-          "title": "土豆炖牛腩",
-          "id": 106,
-          "description": "土豆软烂，牛腩鲜嫩入味，是一道经典的家常炖菜。",
-          "price": "25.00",
-          "originalPrice": "39.00",
-          "tags": [
-            "经典"
-          ],
-          "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
-          "orderNum": 0
-        },
-        {
-          "title": "手抓羊排",
-          "id": 107,
-          "description": "孜然香味浓郁，羊排外焦里嫩，令人食欲大开。",
-          "price": "35.00",
-          "originalPrice": "45.00",
-          "tags": [
-            "孜然",
-            "烧烤"
-          ],
-          "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
-          "orderNum": 0
-        },
-        {
-          "title": "番茄火锅鸡",
-          "id": 108,
-          "description": "酸辣可口，是小妮最爱的贵州风味",
-          "price": "45.00",
-          "originalPrice": "65.00",
-          "tags": [
-            "酸辣",
-            "下饭"
-          ],
-          "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
-          "orderNum": 0
-        },
-        {
-          "title": "豆腐牛肉煲",
-          "id": 109,
-          "description": "滑嫩的豆腐，鲜嫩的牛肉，小妮吃了赞不绝口",
-          "price": "30.00",
-          "originalPrice": "42.00",
-          "tags": [
-            "豆腐",
-            "牛肉"
-          ],
-          "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "image": "./img/dishes/M_sclzj.webp",
           "orderNum": 0
         },
         {
           "title": "油焖大虾",
-          "id": 110,
+          "id": 106,
           "description": "超级好吃的油焖大虾，鲜美到让你停不下来",
-          "price": "30.00",
+          "price": "27.99",
           "originalPrice": "42.00",
           "tags": [
             "香辣",
             "大虾"
           ],
           "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "image": "./img/dishes/M_ymdx.webp",
+          "orderNum": 0
+        },
+        {
+          "title": "番茄火锅鸡",
+          "id": 107,
+          "description": "酸辣可口，是小妮最爱的贵州风味",
+          "price": "27.99",
+          "originalPrice": "42.00",
+          "tags": [
+            "酸辣",
+            "下饭"
+          ],
+          "quantity": 1,
+          "image": "./img/dishes/M_fqhgj.webp",
+          "orderNum": 0
+        },
+        {
+          "title": "土豆炖牛腩",
+          "id": 108,
+          "description": "土豆软烂，牛腩鲜嫩入味，是一道经典的家常炖菜。",
+          "price": "34.99",
+          "originalPrice": "49.00",
+          "tags": [
+            "经典"
+          ],
+          "quantity": 1,
+          "image": "./img/dishes/M_tddnn.webp",
+          "orderNum": 0
+        },
+        {
+          "title": "孜然羊排",
+          "id": 109,
+          "description": "孜然香味浓郁，羊排外焦里嫩，令人食欲大开。",
+          "price": "34.99",
+          "originalPrice": "49.00",
+          "tags": [
+            "孜然",
+            "烧烤"
+          ],
+          "quantity": 1,
+          "image": "./img/dishes/M_zryp.webp",
+          "orderNum": 0
+        },
+        {
+          "title": "豆腐牛肉煲",
+          "id": 110,
+          "description": "滑嫩的豆腐，鲜嫩的牛肉，小妮吃了赞不绝口",
+          "price": "34.99",
+          "originalPrice": "49.00",
+          "tags": [
+            "豆腐",
+            "牛肉"
+          ],
+          "quantity": 1,
+          "image": "./img/dishes/M_dfnrb.webp",
           "orderNum": 0
         }
       ]
