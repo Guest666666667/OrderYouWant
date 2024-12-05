@@ -16,14 +16,14 @@
             "下饭"
           ],
           "quantity": 1,
-          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "image": "./img/dishes/M_ljcr.png",
           "orderNum": 0
         },
         {
           "title": "黄焖鸡",
           "id": 102,
           "description": "经典黄焖鸡，酱香浓郁，鸡肉嫩滑，是一道令人回味无穷的佳肴。",
-          "price": "15.00",
+          "price": "14.99",
           "originalPrice": "21.00",
           "tags": [
             "浓香",
@@ -37,7 +37,7 @@
           "title": "豉油蒸鱼",
           "id": 103,
           "description": "豉油鲜香浓郁，搭配嫩滑的鱼肉，令人食欲大增。",
-          "price": "20.00",
+          "price": "18.99",
           "originalPrice": "28.00",
           "tags": [
             "营养"
@@ -50,7 +50,7 @@
           "title": "红烧排骨",
           "id": 104,
           "description": "排骨酱香浓郁，肉质鲜嫩，是一道受欢迎的经典美味。",
-          "price": "20.00",
+          "price": "18.99",
           "originalPrice": "28.00",
           "tags": [
             "酱香"
