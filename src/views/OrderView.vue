@@ -27,7 +27,7 @@
 
         </Row>
         <Row v-show="validOrder" justify="center">
-            <van-button plain type="success" class="shareButton" @click="showShare = true">分享即可免费吃！</van-button>
+            <van-button plain type="success" class="shareButton" @click="showShare = true">分享即享霸王餐！</van-button>
         </Row>
     </div>
     <ShareSheet v-model:show="showShare" title="分享给大厨，免费吃大餐" :options="options" @select="onSelect" />
@@ -94,7 +94,7 @@ const readLinkInfo = async () => {
     }
     console.log(decimalList_1.value, decimalList_2.value)
     validOrder.value = true;
-    const response = await fetch(`${process.env.BASE_URL}menu.json`);
+    const response = await fetch(`./menu.json`);
     const data = await response.json();
     data.categories.forEach(
         (category: Category) => {

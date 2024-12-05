@@ -44,7 +44,8 @@ const itemQuantities = computed(() => store.getters['itemQuantities']);
 const categoryRefs = ref<(HTMLElement | null)[]>([]);
 
 onMounted(async () => {
-  const response = await fetch(`${process.env.BASE_URL}menu.json`);
+  // const response = await fetch(`${process.env.BASE_URL}menu.json`);
+  const response = await fetch(`./menu.json`);
   const data = await response.json();
   menuData.value = data.categories;
   menuData.value.forEach(
