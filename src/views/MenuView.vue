@@ -8,8 +8,8 @@
       </Sidebar>
       </Col>
       <Col span="18">
-      <div v-for="(category, index) in menuData" :key="index" @mousewheel="handleScroll" @touchmove="handleScroll" class="subMenu"
-        :ref="(el => categoryRefs[index] = el as HTMLElement)">
+      <div v-for="(category, index) in menuData" :key="index" @mousewheel="handleScroll" @touchmove="handleScroll"
+        class="subMenu" :ref="(el => categoryRefs[index] = el as HTMLElement)">
         <Divider>{{ category.name }}</Divider>
         <Card v-for="(item, itemIndex) in category.items" :key="itemIndex" :num="item.quantity" :price="item.price"
           :origin-price="item.originalPrice" :desc="item.description" :title="item.title" :lazy-load="true"
@@ -77,20 +77,16 @@ const handleScroll = () => {
   const screenHeight = window.innerHeight;
   let closestIndex = active.value;
   let maxVisibleHeight = 0;
-  for (let offset = -1; offset <= 1; offset++) {
-    const index = active.value + offset;
-    if (index >= 0 && index < categoryRefs.value.length) {
-      const ref = categoryRefs.value[index];
-      if (ref) {
-        const rect = ref.getBoundingClientRect();
-        const visibleHeight = Math.max(0, Math.min(rect.bottom, screenHeight) - Math.max(rect.top, 0));
-        if (visibleHeight > maxVisibleHeight) {
-          maxVisibleHeight = visibleHeight;
-          closestIndex = index;
-        }
+  categoryRefs.value.forEach((ref, index) => {
+    if (ref) {
+      const rect = ref.getBoundingClientRect();
+      const visibleHeight = Math.max(0, Math.min(rect.bottom, screenHeight) - Math.max(rect.top, 0));
+      if (visibleHeight > maxVisibleHeight) {
+        maxVisibleHeight = visibleHeight;
+        closestIndex = index;
       }
     }
-  }
+  });
   active.value = closestIndex;
 };
 
