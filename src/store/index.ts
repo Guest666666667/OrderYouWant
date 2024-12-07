@@ -36,7 +36,7 @@ export default createStore({
         state.categoryTotals[Math.floor(id / 100)] += change;
         state.itemQuantities[id].orderNum += change; 
         state.totalQuantities += change;
-        state.totalAmount += parseFloat(state.itemQuantities[id].price) * change * 100;
+        state.totalAmount += parseFloat((parseFloat(state.itemQuantities[id].price) * change * 100).toFixed(2));
         if (state.itemQuantities[id].orderNum === 0) { 
           delete state.itemQuantities[id];
         }

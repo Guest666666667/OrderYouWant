@@ -8,7 +8,7 @@
       </Sidebar>
       </Col>
       <Col span="18">
-      <div v-for="(category, index) in menuData" :key="index" @mousewheel="handleScroll" class="subMenu"
+      <div v-for="(category, index) in menuData" :key="index" @mousewheel="handleScroll" @touchmove="handleScroll" class="subMenu"
         :ref="(el => categoryRefs[index] = el as HTMLElement)">
         <Divider>{{ category.name }}</Divider>
         <Card v-for="(item, itemIndex) in category.items" :key="itemIndex" :num="item.quantity" :price="item.price"
