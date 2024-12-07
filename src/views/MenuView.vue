@@ -5,11 +5,13 @@
       <Sidebar v-model="active" @change="scrollToCategory">
         <SidebarItem v-for="(category, index) in menuData" :key="index" :title="category.name"
           :badge="categoryTotals[index + 1] ? categoryTotals[index + 1] : undefined" />
+          
+        {{test}}
       </Sidebar>
       </Col>
       <Col span="18">
-      <div v-for="(category, index) in menuData" :key="index" @mousewheel="handleScroll" @touchmove="handleScroll"
-        class="subMenu" :ref="(el => categoryRefs[index] = el as HTMLElement)">
+      <div v-for="(category, index) in menuData" :key="index" @mousewheel="handleScroll('pc')"
+        @touchmove="handleScroll('mob')" class="subMenu" :ref="(el => categoryRefs[index] = el as HTMLElement)">
         <Divider>{{ category.name }}</Divider>
         <Card v-for="(item, itemIndex) in category.items" :key="itemIndex" :num="item.quantity" :price="item.price"
           :origin-price="item.originalPrice" :desc="item.description" :title="item.title" :lazy-load="true"
@@ -73,11 +75,13 @@ const scrollToCategory = (index: number) => {
   }
 };
 
-const handleScroll = () => {
+const test = ref(0)
+const handleScroll = (type: string) => {
+  test.value++;
   const screenHeight = window.innerHeight;
   let closestIndex = active.value;
   let maxVisibleHeight = 0;
-  categoryRefs.value.forEach((ref, index) => {
+  const setclosestIndex = (ref: HTMLElement | null, index: number) => {
     if (ref) {
       const rect = ref.getBoundingClientRect();
       const visibleHeight = Math.max(0, Math.min(rect.bottom, screenHeight) - Math.max(rect.top, 0));
@@ -86,7 +90,20 @@ const handleScroll = () => {
         closestIndex = index;
       }
     }
-  });
+  }
+  if (type == "mob") {
+    categoryRefs.value.forEach((ref, index) => {
+      setclosestIndex(ref, index)
+    });
+  } else {
+    for (let offset = -1; offset <= 1; offset++) {
+      const index = active.value + offset;
+      if (index >= 0 && index < categoryRefs.value.length) {
+        const ref = categoryRefs.value[index];
+        setclosestIndex(ref, index)
+      }
+    }
+  }
   active.value = closestIndex;
 };
 
