@@ -1,5 +1,5 @@
 <template>
-  <div class="MenuView" @scroll="handleScroll">
+  <div class="MenuView">
     <Row>
       <Col span="6">
       <Sidebar v-model="active" @change="scrollToCategory">
@@ -8,8 +8,9 @@
       </Sidebar>
       </Col>
       <Col span="18">
-      <div v-for="(category, index) in menuData" :key="index">
-        <Divider :ref="el => categoryRefs[index] = (el as any).$el">{{ category.name }}</Divider>
+      <div v-for="(category, index) in menuData" :key="index" @mousewheel="handleScroll" class="subMenu"
+        :ref="(el => categoryRefs[index] = el as HTMLElement)">
+        <Divider>{{ category.name }}</Divider>
         <Card v-for="(item, itemIndex) in category.items" :key="itemIndex" :num="item.quantity" :price="item.price"
           :origin-price="item.originalPrice" :desc="item.description" :title="item.title" :lazy-load="true"
           v-lazy="item" :thumb="item.image">
@@ -18,9 +19,12 @@
           </template>
           <template #footer>
             <div class="counter">
-              <van-button round class="num_button" size="mini" @click="updateOrderNum(item, -1)">-</van-button>
+              <van-button round class="num_button"
+                :disabled="!itemQuantities[item.id] || itemQuantities[item.id]?.orderNum == 0" size="mini"
+                @click="updateOrderNum(item, -1)">-</van-button>
               <span>{{ itemQuantities[item.id]?.orderNum ? itemQuantities[item.id].orderNum : 0 }}</span>
-              <van-button round class="num_button" size="mini" @click="updateOrderNum(item, 1)">+</van-button>
+              <van-button round class="num_button" :disabled="itemQuantities[item.id]?.orderNum == 9" size="mini"
+                @click="updateOrderNum(item, 1)">+</van-button>
             </div>
           </template>
         </Card>
@@ -32,8 +36,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Sidebar, SidebarItem, Divider, Card, Col, Row } from 'vant';
-import { computed, ref, onMounted } from 'vue';
+import { Sidebar, SidebarItem, Divider, Card, Col, Row, Stepper } from 'vant';
+import { computed, ref, onMounted, nextTick } from 'vue';
 import type { Category, MenuItem } from '../types/types';
 import { useStore } from 'vuex';
 
@@ -45,8 +49,8 @@ const categoryTotals = computed(() => store.getters['categoryTotals']);
 const itemQuantities = computed(() => store.getters['itemQuantities']);
 const categoryRefs = ref<(HTMLElement | null)[]>([]);
 
+
 onMounted(async () => {
-  // const response = await fetch(`${process.env.BASE_URL}menu.json`);
   const response = await fetch(`./menu.json`);
   const data = await response.json();
   menuData.value = data.categories;
@@ -58,6 +62,8 @@ onMounted(async () => {
       });
     });
   store.commit('setItemArray', itemArray);
+  await nextTick();
+  scrollToCategory(0);
 });
 
 const scrollToCategory = (index: number) => {
@@ -68,27 +74,30 @@ const scrollToCategory = (index: number) => {
 };
 
 const handleScroll = () => {
-  console.log("handleScroll")
-  // const scrollPosition = (document.querySelector('.subMenu') as HTMLElement).scrollTop;
-  // console.log(scrollPosition)
-  // let closestIndex = 0;
-  // let minDistance = Infinity;
-
-  // categoryRefs.value.forEach((ref, index) => {
-  //   if (ref) {
-  //     const offsetTop = ref.offsetTop;
-  //     const distance = Math.abs(offsetTop - scrollPosition);
-  //     console.log(distance)
-  //     if (distance < minDistance) {
-  //       minDistance = distance;
-  //       closestIndex = index;
-  //     }
-  //   }
-  // });
-  // active.value = closestIndex;
+  const screenHeight = window.innerHeight;
+  let closestIndex = active.value;
+  let maxVisibleHeight = 0;
+  for (let offset = -1; offset <= 1; offset++) {
+    const index = active.value + offset;
+    if (index >= 0 && index < categoryRefs.value.length) {
+      const ref = categoryRefs.value[index];
+      if (ref) {
+        const rect = ref.getBoundingClientRect();
+        const visibleHeight = Math.max(0, Math.min(rect.bottom, screenHeight) - Math.max(rect.top, 0));
+        if (visibleHeight > maxVisibleHeight) {
+          maxVisibleHeight = visibleHeight;
+          closestIndex = index;
+        }
+      }
+    }
+  }
+  active.value = closestIndex;
 };
 
 const updateOrderNum = (item: MenuItem, change: number) => {
+  if (!itemQuantities.value[item.id]) {
+    itemQuantities.value[item.id] = 0;
+  }
   store.commit('updateItemQuantity', { id: item.id, change });
 }
 </script>
@@ -113,7 +122,9 @@ const updateOrderNum = (item: MenuItem, change: number) => {
     justify-content: flex-end;
 
     .num_button {
-      padding: 0 5px;
+      width: 24px;
+      border-radius: 0px;
+      font-size: 18px;
     }
 
     span {

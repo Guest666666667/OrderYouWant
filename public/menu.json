@@ -102,8 +102,21 @@
           "orderNum": 0
         },
         {
-          "title": "土豆炖牛腩",
+          "title": "酱香猪蹄",
           "id": 108,
+          "description": "先卤后炒，酱香扑鼻，还支持烤制哦！",
+          "price": "34.99",
+          "originalPrice": "49.00",
+          "tags": [
+            "卤味酱香"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "土豆炖牛腩",
+          "id": 109,
           "description": "土豆软烂，牛腩鲜嫩入味，是一道经典的家常炖菜。",
           "price": "34.99",
           "originalPrice": "49.00",
@@ -116,7 +129,7 @@
         },
         {
           "title": "孜然羊排",
-          "id": 109,
+          "id": 110,
           "description": "孜然香味浓郁，羊排外焦里嫩，令人食欲大开。",
           "price": "34.99",
           "originalPrice": "49.00",
@@ -130,7 +143,7 @@
         },
         {
           "title": "豆腐牛肉煲",
-          "id": 110,
+          "id": 111,
           "description": "滑嫩的豆腐，鲜嫩的牛肉，小妮吃了赞不绝口",
           "price": "34.99",
           "originalPrice": "49.00",
@@ -271,7 +284,7 @@
       ]
     },
     {
-      "name": "全球美食",
+      "name": "国际美食",
       "id": 3,
       "items": [
         {
@@ -330,12 +343,96 @@
       ]
     },
     {
-      "name": "美味浓汤",
+      "name": "环球海鲜",
       "id": 4,
       "items": [
         {
-          "title": "白菜汤",
+          "title": "贻贝",
           "id": 401,
+          "description": "纽芬兰海域的特色贻贝，鲜美多汁。",
+          "price": "9.99",
+          "originalPrice": "15.00",
+          "tags": [
+            "纽芬兰回忆"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "生蚝",
+          "id": 402,
+          "description": "来自爱德华王子岛的新鲜生蚝，口感细腻。",
+          "price": "19.99",
+          "originalPrice": "25.00",
+          "tags": [
+            "纽芬兰回忆"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "多春鱼",
+          "id": 403,
+          "description": "鲜美的多春鱼，捕捞自纽芬兰海域。",
+          "price": "24.99",
+          "originalPrice": "40.00",
+          "tags": [
+            "纽芬兰回忆"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "鳕鱼",
+          "id": 404,
+          "description": "纽芬兰盛产的鳕鱼，肉质细嫩，口感绝佳。",
+          "price": "29.99",
+          "originalPrice": "50.00",
+          "tags": [
+            "纽芬兰回忆"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "波士顿龙虾",
+          "id": 405,
+          "description": "来自纽芬兰海域的波士顿龙虾，肉质饱满。",
+          "price": "98.00",
+          "originalPrice": "120.00",
+          "tags": [
+            "纽芬兰回忆"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "雪蟹",
+          "id": 406,
+          "description": "纽芬兰冰冷水域的特色雪蟹，鲜甜美味。",
+          "price": "128.00",
+          "originalPrice": "180.00",
+          "tags": [
+            "纽芬兰回忆"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        }
+      ]
+    },    
+    {
+      "name": "美味浓汤",
+      "id": 5,
+      "items": [
+        {
+          "title": "白菜汤",
+          "id": 501,
           "description": "清淡可口的白菜汤，营养丰富，适合清胃。",
           "price": "6.00",
           "originalPrice": "10.00",
@@ -348,7 +445,7 @@
         },
         {
           "title": "紫菜蛋花汤",
-          "id": 402,
+          "id": 502,
           "description": "清新的紫菜蛋花汤，紫菜与鸡蛋的完美结合，味道鲜美。",
           "price": "8.00",
           "originalPrice": "12.00",
@@ -361,7 +458,7 @@
         },
         {
           "title": "玉米排骨汤",
-          "id": 403,
+          "id": 503,
           "description": "玉米和排骨的完美结合，鲜美可口，营养丰富。",
           "price": "15.00",
           "originalPrice": "20.00",
@@ -374,7 +471,7 @@
         },
         {
           "title": "萝卜炖鸡汤",
-          "id": 404,
+          "id": 504,
           "description": "清爽的萝卜和鲜嫩的鸡肉炖制成的美味汤品。",
           "price": "18.00",
           "originalPrice": "24.00",
@@ -387,7 +484,7 @@
         },
         {
           "title": "菌菇养生汤",
-          "id": 405,
+          "id": 505,
           "description": "多种菌菇炖煮的养生汤，味道鲜美，滋补养颜。",
           "price": "20.00",
           "originalPrice": "28.00",
@@ -400,7 +497,7 @@
         },
         {
           "title": "去火老鸭汤",
-          "id": 406,
+          "id": 506,
           "description": "老鸭炖煮的去火汤，滋补去火，清热解毒。",
           "price": "20.00",
           "originalPrice": "28.00",
@@ -414,7 +511,7 @@
         },
         {
           "title": "滋补鸡汤",
-          "id": 407,
+          "id": 507,
           "description": "一锅鸡汤加上适量枸杞红枣，暖暖的。",
           "price": "30.00",
           "originalPrice": "40.00",
@@ -428,7 +525,7 @@
         },
         {
           "title": "韩式泡菜嫩豆腐汤",
-          "id": 408,
+          "id": 508,
           "description": "来一碗热气腾腾的豆腐汤，温暖冬日吧。",
           "price": "30.00",
           "originalPrice": "40.00",
@@ -444,11 +541,11 @@
     },
     {
       "name": "火锅汤底",
-      "id": 5,
+      "id": 6,
       "items": [
         {
           "title": "川渝火锅",
-          "id": 501,
+          "id": 601,
           "description": "正宗的川渝火锅，麻辣鲜香，味道浓郁。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -461,7 +558,7 @@
         },
         {
           "title": "菌汤养生锅",
-          "id": 502,
+          "id": 602,
           "description": "鲜美的菌汤火锅，丰富的菌菇，健康又美味。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -474,7 +571,7 @@
         },
         {
           "title": "番茄锅",
-          "id": 503,
+          "id": 603,
           "description": "酸甜可口的番茄火锅，营养丰富，口感清新。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -488,7 +585,7 @@
         },
         {
           "title": "酸汤锅",
-          "id": 504,
+          "id": 604,
           "description": "清爽酸辣的酸汤火锅，开胃又美味。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -501,7 +598,7 @@
         },
         {
           "title": "豆豉火锅",
-          "id": 505,
+          "id": 605,
           "description": "独特风味的豆豉火锅，香辣可口。",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -514,7 +611,7 @@
         },
         {
           "title": "韩式部队锅",
-          "id": 506,
+          "id": 606,
           "description": "丰富多样的韩式部队锅，辛辣开胃，满满的食材。",
           "price": "20.00",
           "originalPrice": "27.00",
@@ -527,7 +624,7 @@
         },
         {
           "title": "日式寿喜烧",
-          "id": 507,
+          "id": 607,
           "description": "经典的日式寿喜烧，甜咸适中，肉嫩菜鲜。",
           "price": "20.00",
           "originalPrice": "27.00",
@@ -540,7 +637,7 @@
         },
         {
           "title": "猪肚煲鸡锅",
-          "id": 508,
+          "id": 608,
           "description": "经一道营养丰富、滋补养生的传统中式美食，尤其适合寒冷的加拿大享用",
           "price": "20.00",
           "originalPrice": "27.00",
@@ -556,11 +653,11 @@
     },
     {
       "name": "火锅素菜",
-      "id": 6,
+      "id": 7,
       "items": [
         {
           "title": "生菜",
-          "id": 601,
+          "id": 701,
           "description": "清爽可口的生菜，富含维生素，健康选择。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -574,7 +671,7 @@
         },
         {
           "title": "青菜",
-          "id": 602,
+          "id": 702,
           "description": "新鲜的青菜，口感清脆，营养丰富。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -587,7 +684,7 @@
         },
         {
           "title": "豆芽",
-          "id": 603,
+          "id": 703,
           "description": "嫩嫩的豆芽，爽口又健康。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -600,7 +697,7 @@
         },
         {
           "title": "土豆",
-          "id": 604,
+          "id": 704,
           "description": "细腻的土豆，适合各种烹饪方式，百搭蔬菜。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -613,7 +710,7 @@
         },
         {
           "title": "萝卜",
-          "id": 605,
+          "id": 705,
           "description": "鲜美的萝卜，生吃熟吃皆可。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -626,7 +723,7 @@
         },
         {
           "title": "冬瓜",
-          "id": 606,
+          "id": 706,
           "description": "清甜的冬瓜，适合炖汤或煮菜。",
           "price": "6.00",
           "originalPrice": "9.00",
@@ -639,7 +736,7 @@
         },
         {
           "title": "豆皮",
-          "id": 607,
+          "id": 707,
           "description": "质地嫩滑的豆皮，适合各种烹饪方式。",
           "price": "8.00",
           "originalPrice": "12.00",
@@ -652,7 +749,7 @@
         },
         {
           "title": "腐竹",
-          "id": 608,
+          "id": 708,
           "description": "富含营养的腐竹，口感独特，适合凉拌或煮汤。",
           "price": "8.00",
           "originalPrice": "12.00",
@@ -665,7 +762,7 @@
         },
         {
           "title": "海带",
-          "id": 609,
+          "id": 709,
           "description": "营养丰富的海带，适合凉拌或炖汤。",
           "price": "8.00",
           "originalPrice": "12.00",
@@ -678,7 +775,7 @@
         },
         {
           "title": "粉丝",
-          "id": 610,
+          "id": 710,
           "description": "细嫩的粉丝，搭配各种菜肴都很美味。",
           "price": "8.00",
           "originalPrice": "12.00",
@@ -693,11 +790,11 @@
     },
     {
       "name": "火锅荤菜",
-      "id": 7,
+      "id": 8,
       "items": [
         {
           "title": "丸子",
-          "id": 701,
+          "id": 801,
           "description": "Q弹可口的肉丸子，适合搭配各种火锅或炖菜。",
           "price": "18.00",
           "originalPrice": "28.00",
@@ -710,7 +807,7 @@
         },
         {
           "title": "鸡肉",
-          "id": 702,
+          "id": 802,
           "description": "嫩滑的鸡肉，适合各种烹饪方式，营养丰富。",
           "price": "18.00",
           "originalPrice": "28.00",
@@ -723,7 +820,7 @@
         },
         {
           "title": "五花肉",
-          "id": 703,
+          "id": 803,
           "description": "肥瘦相间的五花肉，入口即化，味道鲜美。",
           "price": "28.00",
           "originalPrice": "35.00",
@@ -736,7 +833,7 @@
         },
         {
           "title": "雪花牛肉",
-          "id": 704,
+          "id": 804,
           "description": "鲜嫩多汁的雪花牛肉，口感丰富，风味独特。",
           "price": "48.00",
           "originalPrice": "60.00",
@@ -750,7 +847,7 @@
         },
         {
           "title": "羊肉",
-          "id": 705,
+          "id": 805,
           "description": "鲜嫩的羊肉，富含蛋白质，适合红烧、炖汤等多种烹饪方式。",
           "price": "48.00",
           "originalPrice": "60.00",
@@ -764,12 +861,116 @@
       ]
     },
     {
+      "name": "早餐专区",
+      "id": 9,
+      "items": [
+        {
+          "title": "鸡蛋羹",
+          "id": 901,
+          "description": "嫩滑的鸡蛋羹，营养丰富。",
+          "price": "3.00",
+          "originalPrice": "4.00",
+          "tags": [
+            "营养",
+            "嫩滑"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "蒸玉米",
+          "id": 902,
+          "description": "香甜可口的蒸玉米，自然原味。",
+          "price": "3.00",
+          "originalPrice": "4.00",
+          "tags": [
+            "香甜",
+            "天然"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "蒸红薯",
+          "id": 903,
+          "description": "软糯甜美的蒸红薯，健康选择。",
+          "price": "3.00",
+          "originalPrice": "4.00",
+          "tags": [
+            "甜美",
+            "健康"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "葱油饼",
+          "id": 904,
+          "description": "金黄酥脆的葱油饼，香气四溢。",
+          "price": "4.00",
+          "originalPrice": "5.00",
+          "tags": [
+            "酥脆",
+            "香气"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "汤圆",
+          "id": 905,
+          "description": "糯米制成的传统汤圆，内馅丰富。",
+          "price": "5.00",
+          "originalPrice": "6.00",
+          "tags": [
+            "传统",
+            "内馅丰富"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "水饺",
+          "id": 906,
+          "description": "经典水饺，皮薄馅多，口感绝佳。",
+          "price": "5.00",
+          "originalPrice": "6.00",
+          "tags": [
+            "经典",
+            "皮薄馅多"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        },
+        {
+          "title": "煎饺",
+          "id": 907,
+          "description": "煎至金黄的饺子，外脆里嫩。",
+          "price": "6.00",
+          "originalPrice": "8.00",
+          "tags": [
+            "外脆",
+            "里嫩"
+          ],
+          "quantity": 1,
+          "image": "https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg",
+          "orderNum": 0
+        }
+      ]
+    },    
+    {
       "name": "滋味小食",
-      "id": 8,
+      "id": 10,
       "items": [
         {
           "title": "麻辣鸡丝",
-          "id": 801,
+          "id": 1001,
           "description": "一道口感鲜香麻辣、色泽诱人的川菜",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -782,7 +983,7 @@
         },
         {
           "title": "重庆苕皮",
-          "id": 802,
+          "id": 1002,
           "description": "美味软糯苕皮，裹上辣椒粉和酸豇豆，美味的不得了",
           "price": "15.00",
           "originalPrice": "18.00",
@@ -796,7 +997,7 @@
         },
         {
           "title": "桂花醪糟小丸子",
-          "id": 803,
+          "id": 1003,
           "description": "一道非常受欢迎的传统小吃",
           "price": "15.00",
           "originalPrice": "16.00",
@@ -810,7 +1011,7 @@
         },
         {
           "title": "红枣银耳羹",
-          "id": 804,
+          "id": 1004,
           "description": "滋补养颜、润肺生津。",
           "price": "10.00",
           "originalPrice": "15.00",
@@ -823,7 +1024,7 @@
         },
         {
           "title": "拍黄瓜",
-          "id": 805,
+          "id": 1005,
           "description": "清脆爽口，酸辣开胃",
           "price": "8.00",
           "originalPrice": "10.00",
@@ -836,7 +1037,7 @@
         },
         {
           "title": "凉拌木耳",
-          "id": 806,
+          "id": 1006,
           "description": "好吃绝了，酸辣爽口凉拌菜。",
           "price": "9.00",
           "originalPrice": "12.00",
@@ -851,11 +1052,11 @@
     },
     {
       "name": "酒水饮料",
-      "id": 9,
+      "id": 11,
       "items": [
         {
           "title": "清茶",
-          "id": 901,
+          "id": 1101,
           "description": "淡雅的清茶，清新自然，回味悠长。",
           "price": "5.00",
           "originalPrice": "8.00",
@@ -868,7 +1069,7 @@
         },
         {
           "title": "橙汁",
-          "id": 902,
+          "id": 1102,
           "description": "新鲜的橙汁，酸甜可口，富含维生素C。",
           "price": "12.00",
           "originalPrice": "15.00",
@@ -881,7 +1082,7 @@
         },
         {
           "title": "奶茶",
-          "id": 903,
+          "id": 1103,
           "description": "香浓的奶茶，甜美丝滑，令人心情愉悦。",
           "price": "12.00",
           "originalPrice": "15.00",
@@ -894,7 +1095,7 @@
         },
         {
           "title": "椰汁",
-          "id": 904,
+          "id": 1104,
           "description": "清爽的椰汁，香甜可口，解渴佳品。",
           "price": "15.00",
           "originalPrice": "18.00",

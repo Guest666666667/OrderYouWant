@@ -6,7 +6,7 @@
             <Col span="2" />
             <Col span="20">
             <Card v-for="(item, itemIndex) in OrderItems" :key="itemIndex" :num="item.quantity * item.orderNum"
-                :price="parseFloat(item.price) * item.orderNum"
+                :price="(parseFloat(item.price) * item.orderNum).toFixed(2)"
                 :origin-price="parseFloat(item.originalPrice) * item.orderNum" :desc="item.description"
                 :title="item.title" :thumb="item.image">
                 <template #tags>
@@ -18,13 +18,17 @@
             <Col span="2" />
         </Row>
         <Row v-show="validOrder" justify="center">
-            <span class="total">订单总额：</span>
-            <RollingText :start-num="0" :target-num="integerPart" :duration="1" stop-order="rtl" />
-            <span class="total">.</span>
-            <RollingText :text-list="decimalList_1" :duration="1" stop-order="rtl" />
-            <RollingText :text-list="decimalList_2" :duration="1" stop-order="rtl" />
-
-
+            <span class="basicFont originalFont">原价：</span>
+            <span class="basicFont decimalFont originalFont">￥</span>
+            <span class="basicFont originalFont">{{ originalAmount }}</span>
+        </Row>
+        <Row v-show="validOrder" justify="center">
+            <span class="basicFont">订单总额：</span>
+            <span class="basicFont decimalFont">￥</span>
+            <RollingText :start-num="0" :target-num="integerPart" :duration="1" stop-order="rtl" class="integerFont" />
+            <span class="basicFont decimalFont">.</span>
+            <RollingText :text-list="decimalList_1" :duration="1" stop-order="rtl" class="decimalFont" />
+            <RollingText :text-list="decimalList_2" :duration="1" stop-order="rtl" class="decimalFont" />
         </Row>
         <Row v-show="validOrder" justify="center">
             <van-button plain type="success" class="shareButton" @click="showShare = true">分享即享霸王餐！</van-button>
@@ -57,6 +61,8 @@ const options = [
 ];
 const qrCodeDataUrl = ref('');
 const showQrcode = ref(false);
+const originalAmount = ref(0)
+let totalAmount = 0;
 const integerPart = ref(0);
 const decimalPart_1 = ref("");
 const decimalPart_2 = ref("");
@@ -67,33 +73,15 @@ onMounted(() => {
 });
 const readLinkInfo = async () => {
     const info = route.query.info as string;
+    const orderStr = convertBase62(info.split("_")[0], false);
     let count = 0;
     OrderItems.value = [];
+    totalAmount = 0;
+    originalAmount.value = 0;
     decimalList_1.value = [];
     decimalList_2.value = [];
-    const orderStr = convertBase62(info.split("_")[0], false);
-    try {
-        const infoAmount = info.split("_")[1]
-        const totalAmount = parseInt(convertBase62(infoAmount, false), 10) / 100;
-        if (isNaN(totalAmount)) { throw new Error(); }
-        integerPart.value = Math.floor(totalAmount);
-        const decimalPart = (totalAmount % 1).toFixed(2).substring(2);
-        decimalPart_1.value = decimalPart.charAt(0);
-        decimalPart_2.value = decimalPart.charAt(1);
-        console.log(integerPart.value, decimalPart_1.value, decimalPart_2.value)
-    } catch (err) {
-        validOrder.value = false;
-        return;
-    }
 
-    for (let i = 9; i >= 0; i--) {
-        const num_1 = (parseInt(decimalPart_1.value) - i + 10) % 10;
-        const num_2 = (parseInt(decimalPart_2.value) + i) % 10;
-        decimalList_1.value.push(num_1.toString());
-        decimalList_2.value.push(num_2.toString());
-    }
-    console.log(decimalList_1.value, decimalList_2.value)
-    validOrder.value = true;
+    // Read menu and caculate amount
     const response = await fetch(`./menu.json`);
     const data = await response.json();
     data.categories.forEach(
@@ -103,10 +91,35 @@ const readLinkInfo = async () => {
                 if (!isNaN(orderNum) && orderNum !== 0) {
                     item.orderNum = orderNum;
                     OrderItems.value.push(item);
+                    totalAmount += parseFloat((parseFloat(item.price) * orderNum).toFixed(2));
+                    originalAmount.value += parseFloat((parseFloat(item.originalPrice) * orderNum).toFixed(2));
                 }
                 count++;
             });
         });
+
+    // Vaildate the infomation from link
+    if (orderStr.length != count) {
+        validOrder.value = false;
+        OrderItems.value = [];
+        totalAmount = 0;
+        originalAmount.value = 0;
+        return;
+    }
+
+    // Build decimal number animation array
+    integerPart.value = Math.floor(totalAmount);
+    const decimalPart = (totalAmount % 1).toFixed(2).substring(2);
+    decimalPart_1.value = decimalPart.charAt(0);
+    decimalPart_2.value = decimalPart.charAt(1);
+    for (let i = 9; i >= 0; i--) {
+        const num_1 = (parseInt(decimalPart_1.value) - i + 10) % 10;
+        const num_2 = (parseInt(decimalPart_2.value) + i) % 10;
+        decimalList_1.value.push(num_1.toString());
+        decimalList_2.value.push(num_2.toString());
+    }
+    validOrder.value = true;
+
 }
 // watch for the link info change
 watch(
@@ -155,26 +168,29 @@ const getQrcode = async () => {
         height: 15px;
     }
 
-    .counter {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
+    .basicFont {
+        line-height: 40px;
+    }
 
-        .num_button {
-            padding: 0 5px;
-        }
+    .originalFont {
+        color: gray !important;
+        text-decoration: line-through;
+    }
 
-        span {
-            margin: 0 5px 0 10px;
-        }
+    .integerFont {
+        font-size: var(--van-submit-bar-price-integer-font-size);
+        font-weight: var(--van-font-bold);
+        color: var(--van-submit-bar-price-color);
+    }
+
+    .decimalFont {
+        font-size: var(--van-submit-bar-price-font-size);
+        font-weight: var(--van-font-bold);
+        color: var(--van-submit-bar-price-color);
     }
 
     .van-submit-bar {
         bottom: 50px;
-    }
-
-    .total {
-        line-height: 40px;
     }
 
     .shareButton {

@@ -26,7 +26,9 @@
                         <van-button round class="num_button" size="mini"
                             @click="updateOrderNum(item, -1)">-</van-button>
                         <span>{{ itemQuantities[item.id].orderNum }}</span>
-                        <van-button round class="num_button" size="mini" @click="updateOrderNum(item, 1)">+</van-button>
+                        <van-button round class="num_button" size="mini"
+                            :disabled="itemQuantities[item.id].orderNum == 9"
+                            @click="updateOrderNum(item, 1)">+</van-button>
                     </div>
                 </template>
             </Card>
@@ -42,7 +44,7 @@
 
 <script lang="ts" setup>
 
-import { Empty, Card, Col, Row, SubmitBar, showLoadingToast } from 'vant';
+import { Empty, Card, Col, Row, SubmitBar, showConfirmDialog, showLoadingToast } from 'vant';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import type { MenuItem } from '../types/types';
@@ -56,7 +58,18 @@ const itemQuantities = computed(() => store.getters['itemQuantities']);
 const totalQuantities = computed(() => store.getters['totalQuantities']);
 const totalAmount = computed(() => store.getters['totalAmount']);
 const updateOrderNum = (item: MenuItem, change: number) => {
-    store.commit('updateItemQuantity', { id: item.id, change });
+    if (item.orderNum + change == 0) {
+        showConfirmDialog({
+            title: '删除？',
+            message:
+                '将从购物车中移除这件商品',
+            cancelButtonText: '我再想想',
+        }).then(() => {
+            store.commit('updateItemQuantity', { id: item.id, change });
+        }).catch(() => { return });
+    } else {
+        store.commit('updateItemQuantity', { id: item.id, change });
+    }
 }
 const onSubmit = () => {
     showLoadingToast({
@@ -68,7 +81,7 @@ const onSubmit = () => {
 };
 const jumpToOrderPage = () => {
     let orderStr = itemArray.value.map((item: MenuItem) => item.orderNum).join('');
-    let encodedOrderStr = convertBase62(orderStr, true) + "_" + convertBase62(totalAmount.value, true);
+    let encodedOrderStr = convertBase62(orderStr, true);
     router.push({ name: 'order', query: { info: encodedOrderStr } });
 }
 </script>
@@ -89,7 +102,9 @@ const jumpToOrderPage = () => {
         justify-content: flex-end;
 
         .num_button {
-            padding: 0 5px;
+            width: 24px;
+            border-radius: 0px;
+            font-size: 18px;
         }
 
         span {
