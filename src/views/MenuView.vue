@@ -5,8 +5,6 @@
       <Sidebar v-model="active" @change="scrollToCategory">
         <SidebarItem v-for="(category, index) in menuData" :key="index" :title="category.name"
           :badge="categoryTotals[index + 1] ? categoryTotals[index + 1] : undefined" />
-          
-        {{test}}
       </Sidebar>
       </Col>
       <Col span="18">
@@ -75,9 +73,7 @@ const scrollToCategory = (index: number) => {
   }
 };
 
-const test = ref(0)
 const handleScroll = (type: string) => {
-  test.value++;
   const screenHeight = window.innerHeight;
   let closestIndex = active.value;
   let maxVisibleHeight = 0;
